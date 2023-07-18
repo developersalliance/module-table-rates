@@ -12,8 +12,11 @@
         "magento/module-customer": "*",
         "magento/module-sales": "*",
         "magento/module-config": "*",
-        "developersalliance/module-base": "*"
+        "developers alliance/module-base": "*"
     },
+    "license": [
+        "MIT"
+    ],
     "autoload": {
         "files": [
             "registration.php"
