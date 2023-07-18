@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Developers-Alliance team
+ * @copyright Copyright (c) 2023 Developers-alliance (https://www.developers-alliance.com)
+ * @package Shipping Table Rates for Magento 2
+ */-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">tablerates_view_grid.tablerates_view_grid_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="tablerates/view/new"/>
+                <class>primary</class>
+                <label translate="true">Add New Rate</label>
+            </button>
+        </buttons>
+        <spinner>tablerates_columns</spinner>
+        <deps>
+            <dep>tablerates_view_grid.tablerates_view_grid_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="tablerates_view_grid_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">pk</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>DevAll_TableRates::view</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="tablerates_view_grid_data_source">
+            <settings>
+                <requestFieldName>pk</requestFieldName>
+                <primaryFieldName>pk</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <massaction name="listing_massaction">
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="isAjax" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+                <settings>
+                    <url path="tablerates/actions/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                    <confirm>
+                        <message translate="true">Are you sure to delete selected shipping table rates?</message>
+                        <title translate="true">Delete Rates</title>
+                    </confirm>
+                </settings>
+            </action>
+        </massaction>
+        <filters name="listing_filters">
+            <settings>
+                <storageConfig>
+                    <param name="provider" xsi:type="string">tablerates_view_grid.tablerates_view_grid.listing_top.bookmarks</param>
+                    <param name="namespace" xsi:type="string">current.filters</param>
+                </storageConfig>
+                <childDefaults>
+                    <param name="provider" xsi:type="string">tablerates_view_grid.tablerates_view_grid.listing_top.listing_filters</param>
+                    <param name="imports" xsi:type="array">
+                        <item name="visible" xsi:type="string">tablerates_view_grid.tablerates_view_grid.listing_top.bookmarks:current.columns.${ $.index }.visible</item>
+                    </param>
+                </childDefaults>
+            </settings>
+        </filters>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="tablerates_columns">
+        <settings>
+            <editorConfig>
+                <param name="selectProvider" xsi:type="string">tablerates_view_grid.tablerates_view_grid.tablerates_columns.ids</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+                <param name="indexField" xsi:type="string">pk</param>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" path="tablerates/actions/inlineEdit" xsi:type="url"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+                <param name="templates" xsi:type="array">
+                    <item name="record" xsi:type="array">
+                        <item name="component" xsi:type="string">DevAll_TableRates/js/grid/editing/region</item>
+                    </item>
+                </param>
+            </editorConfig>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">tablerates_view_grid.tablerates_view_grid.tablerates_columns_editor</item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>pk</indexField>
+                <fieldClass>
+                    <class name="pk-column">true</class>
+                </fieldClass>
+            </settings>
+        </selectionsColumn>
+        <column name="pk">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">ID</label>
+                <sorting>asc</sorting>
+                <fieldClass>
+                    <class name="pk-column">true</class>
+                </fieldClass>
+            </settings>
+        </column>
+        <column name="dest_country_id" component="DevAll_TableRates/js/grid/columns/country-select">
+            <settings>
+                <filter>select</filter>
+                <options class="Magento\Customer\Ui\Component\Listing\Address\Column\Countries"/>
+                <dataType>select</dataType>
+                <label translate="true">Country</label>
+                <bodyTmpl>DevAll_TableRates/grid/country-select</bodyTmpl>
+                <fieldClass>
+                    <class name="country-flag">true</class>
+                </fieldClass>
+                <editor>
+                    <editorType>select</editorType>
+                </editor>
+            </settings>
+        </column>
+        <column name="dest_zip">
+            <settings>
+                <filter>text</filter>
+                <editor>
+                    <editorType>text</editorType>
+                </editor>
+                <label translate="true">Zip/Postal Code</label>
+            </settings>
+        </column>
+        <column name="dest_region_id" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Region/State</label>
+                <editor>
+                    <editorType>region</editorType>
+                </editor>
+                <options class="DevAll\TableRates\Ui\Component\Listing\Column\Source\Region"/>
+            </settings>
+        </column>
+        <column name="condition_value" class="DevAll\TableRates\Ui\Component\Listing\Column\ConditionValue">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Condition Value</label>
+                <fieldClass>
+                    <class name="condition-value">true</class>
+                </fieldClass>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="validate-number" xsi:type="boolean">true</rule>
+                        <rule name="greater-than-equals-to" xsi:type="number">0.0</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="price" class="Magento\Sales\Ui\Component\Listing\Column\Price">
+            <settings>
+                <filter>textRange</filter>
+                <editor>
+                    <editorType>price</editorType>
+                </editor>
+                <label translate="true">Price</label>
+            </settings>
+        </column>
+        <column name="condition_name" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Magento\OfflineShipping\Model\Config\Source\Tablerate"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Condition</label>
+                <editor>
+                    <editorType>select</editorType>
+                </editor>
+            </settings>
+        </column>
+        <column name="website_id" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Magento\Config\Model\Config\Source\Website"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Website</label>
+                <editor>
+                    <editorType>select</editorType>
+                </editor>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="DevAll\TableRates\Ui\Component\Listing\Column\TableRatesActions">
+            <settings>
+                <indexField>pk</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

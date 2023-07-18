@@ -1,0 +1,25 @@
+{
+    "name": "developersalliance/module-table-rates",
+    "version": "1.0.0",
+    "description": "This module allows administrators to manage and view shipping table rates from the admin UI.",
+    "type": "magento2-module",
+    "require": {
+        "magento/framework": "*",
+        "php": "^7.3|^7.4|^8.0|^8.1|^8.2",
+        "magento/module-shipping": "*",
+        "magento/module-offline-shipping": "*",
+        "magento/module-ui": "*",
+        "magento/module-customer": "*",
+        "magento/module-sales": "*",
+        "magento/module-config": "*",
+        "developersalliance/module-base": "*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "DevAll\\TableRates\\": ""
+        }
+    }
+}

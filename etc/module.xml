@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Developers-Alliance team
+ * @copyright Copyright (c) 2023 Developers-alliance (https://www.developers-alliance.com)
+ * @package Shipping Table Rates for Magento 2
+ */-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="DevAll_TableRates">
+        <sequence>
+            <module name="Magento_OfflineShipping"/>
+            <module name="Magento_Ui"/>
+            <module name="Magento_Customer"/>
+            <module name="Magento_Sale"/>
+            <module name="Magento_Config"/>
+            <module name="Magento_Shipping"/>
+<!--            <module name="DevAll_Base"/>-->
+        </sequence>
+    </module>
+</config>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Developers-Alliance team
+ * @copyright Copyright (c) 2023 Developers-alliance (https://www.developers-alliance.com)
+ * @package Shipping Table Rates for Magento 2
+ */-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="DevAll_TableRates::tablerates" title="DevAll Shipping Table Rates">
+                    <resource id="DevAll_TableRates::view" title="DevAll Shipping Table Rates View"/>
+                    <resource id="DevAll_TableRates::management" title="DevAll Shipping Table Rates Management"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

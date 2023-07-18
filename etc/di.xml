@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Developers-Alliance team
+ * @copyright Copyright (c) 2023 Developers-alliance (https://www.developers-alliance.com)
+ * @package Shipping Table Rates for Magento 2
+ */-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="DevAll\TableRates\Model\ResourceModel\TableRates\Grid\VirtualCollection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">shipping_tablerate</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\OfflineShipping\Model\ResourceModel\Carrier\Tablerate</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="tablerates_view_grid_data_source" xsi:type="string">
+                    DevAll\TableRates\Model\ResourceModel\TableRates\Grid\VirtualCollection
+                </item>
+                <item name="tablerates_view_form_data_source" xsi:type="string">
+                    DevAll\TableRates\Model\ResourceModel\TableRates\Grid\VirtualCollection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <preference for="DevAll\TableRates\Api\Data\TablerateInterface"
+                type="DevAll\TableRates\Model\Tablerate"/>
+    <preference for="DevAll\TableRates\Api\TablerateRepositoryInterface"
+                type="DevAll\TableRates\Model\TablerateRepository"/>
+</config>

@@ -1,0 +1,51 @@
+/**
+ * @author Developers-Alliance team
+ * @copyright Copyright (c) 2023 Developers-alliance (https://www.developers-alliance.com)
+ * @package Shipping Table Rates for Magento 2
+ */
+
+@import "_variables";
+
+.data-grid {
+    tr {
+        td.country-flag {
+            background: @primary-color;
+            border-top-right-radius: @border-radius;
+            border-bottom-right-radius: @border-radius;
+            color: @text-color;
+            font-weight: @font-weight-bold;
+
+            .data-grid-cell-content {
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+
+                img {
+                    max-width: @flag__width;
+                    height: @flag__height;
+                    margin-right: @flag__margin-right;
+                }
+            }
+        }
+    }
+
+    tr {
+        td.pk-column {
+            background: @primary-color;
+            color: @text-color;
+        }
+
+        &._odd-row {
+            td.country-flag,
+            td.pk-column {
+                background-color: @secondary-color;
+                border: unset;
+            }
+        }
+    }
+}
+
+td.condition-value {
+    text-align: @condition-value__text-align;
+}

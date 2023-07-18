@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * @author Developers-Alliance team
+ * @copyright Copyright (c) 2023 Developers-alliance (https://www.developers-alliance.com)
+ * @package Shipping Table Rates for Magento 2
+ */-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">tablerates_view_form.tablerates_view_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back">
+                <url path="tablerates/view/grid"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+            <button name="save">
+                <url path="tablerates/actions/save"/>
+                <class>save primary</class>
+                <label translate="true">Save</label>
+            </button>
+        </buttons>
+        <namespace>tablerates_view_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>tablerates_view_form.tablerates_view_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="tablerates_view_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="tablerates/actions/save"/>
+        </settings>
+        <dataProvider class="DevAll\TableRates\Ui\Component\FormDataProvider" name="tablerates_view_form_data_source">
+            <settings>
+                <requestFieldName>pk</requestFieldName>
+                <primaryFieldName>pk</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+        <field name="pk" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>pk</dataScope>
+            </settings>
+        </field>
+        <field name="dest_country_id" sortOrder="20" formElement="select">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>select</dataType>
+                <label translate="true">Country</label>
+                <dataScope>dest_country_id</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magento\Customer\Ui\Component\Listing\Address\Column\Countries"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="dest_region_id" formElement="select" component="DevAll_TableRates/js/form/element/region">
+            <settings>
+                <dataType>select</dataType>
+                <label translate="true">Region/State</label>
+                <dataScope>dest_region_id</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="DevAll\TableRates\Ui\Component\Listing\Column\Source\Region"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="dest_zip" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">*</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Zip/Postal Code</label>
+                <dataScope>dest_zip</dataScope>
+            </settings>
+        </field>
+        <field name="condition_value" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">0.00</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                    <rule name="greater-than-equals-to" xsi:type="number">0.0</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Condition Value</label>
+                <dataScope>condition_value</dataScope>
+            </settings>
+        </field>
+        <field name="price" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">0.00</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                    <rule name="validate-number" xsi:type="boolean">true</rule>
+                    <rule name="greater-than-equals-to" xsi:type="number">0.0</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Price</label>
+                <dataScope>price</dataScope>
+            </settings>
+        </field>
+        <field name="condition_name" sortOrder="20" formElement="select">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>select</dataType>
+                <label translate="true">Condition Name</label>
+                <dataScope>condition_name</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magento\OfflineShipping\Model\Config\Source\Tablerate"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+        <field name="website_id" sortOrder="20" formElement="select">
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>select</dataType>
+                <label translate="true">Website</label>
+                <dataScope>website_id</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="Magento\Config\Model\Config\Source\Website"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+</form>
