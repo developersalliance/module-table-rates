@@ -18,7 +18,7 @@ The DevAll_TableRates module enhances the default Magento functionality for mana
 1. Install the module via Composer by running the following command in the Magento 2 root directory:
 
    ```
-   composer require devall/module-table-rates
+   composer require developersalliance/module-table-rates
    ```
 
 2. Run the Magento upgrade command to install the module:
