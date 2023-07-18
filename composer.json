@@ -12,7 +12,7 @@
         "magento/module-customer": "*",
         "magento/module-sales": "*",
         "magento/module-config": "*",
-        "developers alliance/module-base": "*"
+        "developersalliance/module-base": "*"
     },
     "license": [
         "MIT"
