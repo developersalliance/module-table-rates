@@ -180,7 +180,7 @@
             <settings>
                 <filter>textRange</filter>
                 <editor>
-                    <editorType>price</editorType>
+                    <editorType>text</editorType>
                 </editor>
                 <label translate="true">Price</label>
             </settings>

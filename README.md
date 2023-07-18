@@ -6,6 +6,13 @@
 
 The DevAll_TableRates module enhances the default Magento functionality for managing shipping table rates by providing a user-friendly interface for viewing and managing table rates.
 
+---
+
+![Grid Preview](docs/images/grid-preview.png)
+
+---
+
+
 ## Installation
 
 1. Install the module via Composer by running the following command in the Magento 2 root directory:

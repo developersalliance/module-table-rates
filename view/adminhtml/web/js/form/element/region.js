@@ -28,8 +28,8 @@ define([
             this._super().observe(
                 'selectedCountry'
             );
-            //initial filter for selected country
-            this.options(this.initialOptions.filter(option => option.country_id === this.selectedCountry));
+            // //initial filter for selected country
+            this.options(this.initialOptions.filter(option => option.country_id === this.selectedCountry()));
             this.initSubscribers();
             return this;
         },
