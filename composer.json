@@ -1,6 +1,6 @@
 {
     "name": "developersalliance/module-table-rates",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "This module allows administrators to manage and view shipping table rates from the admin UI.",
     "type": "magento2-module",
     "require": {
