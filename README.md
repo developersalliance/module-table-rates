@@ -40,3 +40,10 @@ The DevAll_TableRates module enhances the default Magento functionality for mana
 This module is licensed under the [MIT License](LICENSE.txt).
 
 ---
+
+## Compatability
+
+- All php versions starting from 7.3 and higher are supported
+- All Magento/Adobe Commerce versions starting from 2.3.x and higher
+- If require it for an older version of Magento/PHP we can adjust it individually to fit your website for a special fee.
+
