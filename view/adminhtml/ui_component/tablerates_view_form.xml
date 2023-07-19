@@ -138,6 +138,7 @@
                 <dataType>text</dataType>
                 <label translate="true">Price</label>
                 <dataScope>price</dataScope>
+                <notice>This module is made by Developers-alliance contact us at: developers-alliance.com</notice>
             </settings>
         </field>
         <field name="condition_name" sortOrder="20" formElement="select">

@@ -10,6 +10,7 @@
     <body>
         <referenceContainer name="content">
             <uiComponent name="tablerates_view_grid"/>
+            <block name="notice-footer" template="DevAll_TableRates::notice.phtml"/>
         </referenceContainer>
     </body>
 </page>
