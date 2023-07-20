@@ -17,12 +17,8 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="tablerates_view_grid_data_source" xsi:type="string">
-                    DevAll\TableRates\Model\ResourceModel\TableRates\Grid\VirtualCollection
-                </item>
-                <item name="tablerates_view_form_data_source" xsi:type="string">
-                    DevAll\TableRates\Model\ResourceModel\TableRates\Grid\VirtualCollection
-                </item>
+                <item name="tablerates_view_grid_data_source" xsi:type="string">DevAll\TableRates\Model\ResourceModel\TableRates\Grid\VirtualCollection</item>
+                <item name="tablerates_view_form_data_source" xsi:type="string">DevAll\TableRates\Model\ResourceModel\TableRates\Grid\VirtualCollection</item>
             </argument>
         </arguments>
     </type>
